@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Bootstrap 5 Simple Starter</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Profile section -->
+      <div class="row">
+        <div
+          class="col-2 bg-dark d-flex flex-column align-items-center p-5 border-end border-2 border-primary"
+        >
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt=""
+            class="rounded-circle"
+            style="width: 45px"
+          />
+          <h4 class="text-primary pt-2">John Doe</h4>
+          <div class="row mt-5">
+            <nav class="nav nav-pills text-center flex-column">
+              <a class="nav-link active mb-2" aria-current="page" href="#"
+                ><i class="bi bi-house-door-fill"></i> Home</a
+              >
+              <a class="nav-link mb-2" href="#"
+                ><i class="bi bi-chat-left-dots"></i> Messages</a
+              >
+              <a class="nav-link mb-2" href="#"
+                ><i class="bi bi-person-circle"></i> Groups</a
+              >
+              <a class="nav-link mb-2" href="#"
+                ><i class="bi bi-calendar-event"></i> Events</a
+              >
+            </nav>
+          </div>
+        </div>
+
+        <!-- Feed section -->
+        <div class="col-7 bg-light text-info">
+          <div class="row p-4">
+            <div class="col-6 mt-1">
+              <h2 class="text-info">Feed</h2>
+              <hr />
+            </div>
+            <div class="col-4 ms-auto">
+              <!-- Search bar -->
+              <label for="searchBar"></label>
+              <input
+                class="form-control"
+                list="datalistOptions"
+                id="searchBar"
+                placeholder="Type to search for... "
+              />
+              <datalist id="datalistOptions">
+                <option value="Fitness"></option>
+                <option value="Diet"></option>
+                <option value="Weightloss"></option>
+                <option value="Workout"></option>
+                <option value="Cardio"></option>
+              </datalist>
+            </div>
+          </div>
+
+          <!-- Post a message section -->
+          <div class="form-container p-3 mt-3">
+            <label for="newPost" class="form-label">What's on your mind?</label>
+            <div class="card">
+              <div class="card-body" id="postMessage_Box">
+                <textarea class="form-control" id="newPost" rows="4"></textarea>
+                <div class="container d-flex justify-content-end my-3">
+                  <button class="btn btn-outline-info mx-2">
+                    <i class="bi bi-camera-reels"></i> Live Video
+                  </button>
+                  <button class="btn btn-dark text-white me-2">
+                    <i class="bi bi-camera"></i>
+                    Add Photo/Video
+                  </button>
+                  <button class="btn btn-primary text-white ms-5">
+                    <i class="bi bi-chat-dots"></i>
+                    Post Message
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Users Feed Posts -->
+          <div class="container-md">
+            <div class="row mx-4 mt-5">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <img
+                  src="assets/images/bs-images/img-2x1.png"
+                  class="card-img-bottom"
+                  alt="card-img-bottom"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side extras -->
+        <!-- Popular spaces -->
+        <div class="col-md-3">
+          <div class="card my-3">
+            <div class="card-body">
+              <h6 class="card-title">Reccomended spaces for you:</h6>
+              <ul class="d-flex flex-column lh-5">
+                <a href="#" class="card-link p-1">#cardio-workouts</a>
+                <a href="#" class="card-link p-1">#weight-loss</a>
+                <a href="#" class="card-link p-1">#breakfas-ideas</a>
+                <a href="#" class="card-link p-1">#strenght&conditioning</a>
+              </ul>
+            </div>
+          </div>
+          <!-- Influencers -->
+          <div class="card my-3">
+            <div class="card-body">
+              <h6 class="card-title text-center mb-3">Popular creators:</h6>
+              <hr class="w-50 mx-auto text-danger" />
+              <div class="container d-flex flex-column">
+                <img
+                  class="rounded-circle mx-auto"
+                  style="width: 60px"
+                  src="https://randomuser.me/api/portraits/women/21.jpg"
+                  alt=""
+                />
+                <h6 class="p-2 text-center">Isabella Johnson</h6>
+                <button class="btn btn-secondary btn-sm">Follow</button>
+              </div>
+            </div>
+            <hr class="w-50 mx-auto text-primary" />
+
+            <div class="card-body">
+              <div class="container d-flex flex-column">
+                <img
+                  class="rounded-circle mx-auto"
+                  style="width: 60px"
+                  src="https://randomuser.me/api/portraits/men/28.jpg"
+                  alt=""
+                />
+                <h6 class="p-2 text-center">Ryan Patel</h6>
+                <button class="btn btn-secondary btn-sm">Follow</button>
+              </div>
+            </div>
+            <hr class="w-50 mx-auto text-primary" />
+
+            <div class="card-body">
+              <div class="container d-flex flex-column">
+                <img
+                  class="rounded-circle mx-auto"
+                  style="width: 60px"
+                  src="https://randomuser.me/api/portraits/women/18.jpg"
+                  alt=""
+                />
+                <h6 class="p-2 text-center">Ava Garcia</h6>
+                <button class="btn btn-secondary btn-sm">Follow</button>
+              </div>
+            </div>
+            <hr class="w-50 mx-auto text-primary" />
+
+            <div class="card-body">
+              <div class="container d-flex flex-column">
+                <img
+                  class="rounded-circle mx-auto"
+                  style="width: 60px"
+                  src="https://randomuser.me/api/portraits/men/18.jpg"
+                  alt=""
+                />
+                <h6 class="p-2 text-center">Ethan Brown</h6>
+                <button class="btn btn-secondary btn-sm">Follow</button>
+              </div>
+            </div>
+            <hr class="w-50 mx-auto text-primary" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
