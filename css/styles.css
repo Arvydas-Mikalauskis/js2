@@ -1,3 +1,16 @@
+.mainContainer {
+  background: url(../images/kike-vega-F2qh3yjz6Jk-unsplash.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+.logInContainer {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#signupButton:hover {
+  cursor: pointer;
+}
+
 #postMessage_Box {
   background-color: rgb(240, 240, 240);
 }
