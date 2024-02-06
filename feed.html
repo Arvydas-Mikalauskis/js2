@@ -62,10 +62,10 @@
                 placeholder="Type to search for... "
               />
               <datalist id="datalistOptions">
-                <option value="Fitness"></option>
-                <option value="Diet"></option>
-                <option value="Weightloss"></option>
-                <option value="Workout"></option>
+                <option value="Title"></option>
+                <option value="Date"></option>
+                <option value="Old"></option>
+                <option value="New"></option>
                 <option value="Cardio"></option>
               </datalist>
             </div>
@@ -76,16 +76,44 @@
             <label for="newPost" class="form-label">What's on your mind?</label>
             <div class="card">
               <div class="card-body" id="postMessage_Box">
-                <textarea class="form-control" id="newPost" rows="4"></textarea>
+                <textarea
+                  class="form-control my-2"
+                  id="newPost_Title"
+                  rows="1"
+                  placeholder="Title"
+                ></textarea>
+                <textarea
+                  class="form-control"
+                  id="newPost_Message"
+                  rows="4"
+                  placeholder="Message"
+                ></textarea>
+                <textarea
+                  class="form-control my-2"
+                  id="imageURL_Input"
+                  rows="1"
+                  placeholder="Add photo/image URL adress"
+                ></textarea>
                 <div class="container d-flex justify-content-end my-3">
-                  <button class="btn btn-outline-info mx-2">
+                  <button class="btn btn-outline-info mx-2" disabled>
                     <i class="bi bi-camera-reels"></i> Live Video
                   </button>
-                  <button class="btn btn-dark text-white me-2">
+                  <button
+                    class="btn btn-dark text-white me-2"
+                    disabled
+                    id="addPhoto_Button"
+                  >
                     <i class="bi bi-camera"></i>
                     Add Photo/Video
                   </button>
-                  <button class="btn btn-primary text-white ms-5">
+
+                  <!-- Add photo button modal (Add it later maybe) -->
+
+                  <!-- ________________ -->
+                  <button
+                    class="btn btn-primary text-white ms-5"
+                    id="postMessage_Button"
+                  >
                     <i class="bi bi-chat-dots"></i>
                     Post Message
                   </button>
@@ -94,10 +122,28 @@
             </div>
           </div>
 
+          <div class="container">
+            <div class="row">
+              <div class="col-5">
+                <select
+                  class="form-select form-select-sm"
+                  id="select_Filter"
+                  aria-label="Small select"
+                >
+                  <option selected="">Filter posts by..</option>
+                  <option value="title">Title</option>
+                  <option value="date">Date</option>
+                  <option value="media">Posts with photos</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           <!-- Users Feed Posts -->
           <div class="container-md">
             <div class="row mx-4 mt-5">
               <div class="card">
+<<<<<<< Updated upstream
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">
@@ -114,8 +160,20 @@
                   class="card-img-bottom"
                   alt="card-img-bottom"
                 />
+=======
+                <div class="card-body" id="postContainer"></div>
+>>>>>>> Stashed changes
               </div>
             </div>
+          </div>
+          <div class="d-grid w-50 mx-auto mt-5">
+            <button
+              class="btn btn-outline-primary py-2 text-dark"
+              id="showMore_PostsButton"
+              type="button"
+            >
+              Show More
+            </button>
           </div>
         </div>
 
@@ -196,6 +254,7 @@
         </div>
       </div>
     </div>
+    <script src="js/feedScripts.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
   </body>
