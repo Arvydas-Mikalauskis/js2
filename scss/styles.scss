@@ -15,3 +15,35 @@
 #postMessage_Box {
   background-color: rgba(240, 240, 240, 1);
 }
+
+.post-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* .deletePost_Btn {
+  background-color: rgb(230, 183, 183);
+  border-radius: 8px;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+} */
+
+.deletePost_Btn {
+  background-color: #eb9292;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 4px;
+  cursor: pointer;
+  float: right;
+  margin-top: -40px;
+}
+
+.deletePost_Btn:hover {
+  background-color: #f56262;
+}

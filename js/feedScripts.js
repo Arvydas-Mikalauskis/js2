@@ -25,23 +25,37 @@ async function fetchWithToken(url, limit = 15, offset = 0) {
 }
 // Single post that user posts
 function displayPost(postData) {
+  const postContainer = document.createElement('div')
+  postContainer.classList.add('post-card')
+
   const newPostTitle = document.createElement('h5')
   newPostTitle.classList.add('card-title')
   newPostTitle.innerText = postData.title
+  postContainer.appendChild(newPostTitle)
+
+  const deletePost_Btn = document.createElement('button')
+  deletePost_Btn.classList.add('deletePost_Btn')
+  deletePost_Btn.innerHTML = `<i class="bi bi-x"></i>`
+  postContainer.appendChild(deletePost_Btn)
+
+  deletePost_Btn.addEventListener('click', () => {
+    deletePost(postData.id)
+    postContainer.remove()
+  })
 
   const newPostElement = document.createElement('p')
   newPostElement.classList.add('card-text')
   newPostElement.innerText = postData.body
+  postContainer.appendChild(newPostElement)
 
   const newPostPhoto = document.createElement('img')
   newPostPhoto.classList.add('card-img-bottom')
   newPostPhoto.src = postData.media
-
-  postCard_Container.appendChild(newPostTitle)
-  postCard_Container.appendChild(newPostElement)
   if (postData.media) {
-    postCard_Container.appendChild(newPostPhoto)
+    postContainer.appendChild(newPostPhoto)
   }
+
+  feedPosts_Container.appendChild(postContainer)
 }
 
 // Show more post on show more button click
@@ -83,7 +97,7 @@ document.getElementById('searchBar').addEventListener('keyup', (e) => {
 
 // note to myself - dont mix with displayPost function // this one for multiple arr
 function displayPosts(posts) {
-  postCard_Container.innerHTML = ''
+  feedPosts_Container.innerHTML = ''
 
   posts.forEach((posts) => {
     displayPost(posts)
@@ -101,7 +115,7 @@ async function searchPosts(searchTerm) {
   )
   displayPosts(filteredPosts)
 
-  postCard_Container.innerHTML = ''
+  feedPosts_Container.innerHTML = ''
 
   filteredPosts.forEach((posts) => {
     displayPost(posts)
@@ -112,7 +126,7 @@ async function searchPosts(searchTerm) {
 const newPost_Title = document.getElementById('newPost_Title')
 const newPost_MessageField = document.getElementById('newPost_Message')
 const newPost_ImageField = document.getElementById('imageURL_Input')
-const postCard_Container = document.getElementById('postContainer')
+const feedPosts_Container = document.getElementById('feedPosts_Container')
 
 const postMessageBtn = document.getElementById('postMessage_Button')
 
@@ -186,5 +200,28 @@ async function postMessage(url, postData) {
     currentOffset = refreshedPosts.length
   } catch (error) {
     console.error('Error:', error)
+  }
+}
+
+// Delete Post
+async function deletePost(postId) {
+  try {
+    const token = localStorage.getItem('accessToken')
+    const url = `${API_BASE_URL}/api/v1/social/posts/${postId}`
+
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+
+    console.log('Post deleted successfully')
+  } catch (error) {
+    console.error('Error deleting post:', error)
   }
 }
