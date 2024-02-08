@@ -119,6 +119,68 @@
           </div>
         </div>
 
+        <!-- Modal to edit Feed Posts -->
+        <!-- Edit Post Modal -->
+        <div
+          class="modal fade"
+          id="editPostModal"
+          tabindex="-1"
+          aria-labelledby="editPostModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <textarea
+                    class="form-control my-2"
+                    id="updatedPost_Title"
+                    rows="1"
+                    placeholder="Title"
+                  ></textarea>
+                  <textarea
+                    class="form-control my-2"
+                    id="updatedPost_Message"
+                    rows="4"
+                    placeholder="Message"
+                  ></textarea>
+                  <textarea
+                    class="form-control my-2"
+                    id="updatePost_Media"
+                    rows="1"
+                    placeholder="Phot/Picture URL"
+                  ></textarea>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="savePost_Changes"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Right side extras -->
         <!-- Popular spaces -->
         <div class="col-md-3">
@@ -196,6 +258,10 @@
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
+=======
+    <script src="js/feedScripts.js" type="module"></script>
+>>>>>>> Stashed changes
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
   </body>
