@@ -1,9 +1,16 @@
 // Fetch posts
 const API_BASE_URL = 'https://api.noroff.dev'
-async function fetchWithToken(url, limit = 15, offset = 0) {
+async function fetchWithToken(
+  url,
+  limit = 15,
+  offset = 0,
+  sort = null,
+  sortOrder = null
+) {
   try {
     const token = localStorage.getItem('accessToken')
-    const paginatedURL = `${url}?limit=${limit}&offset=${offset}`
+    const sortParams = sort ? `&sort=${sort}&sortOrder=${sortOrder}` : ''
+    const paginatedURL = `${url}?limit=${limit}&offset=${offset}${sortParams}`
     const getData = {
       method: 'GET',
       headers: {
@@ -23,6 +30,7 @@ async function fetchWithToken(url, limit = 15, offset = 0) {
     console.log(error)
   }
 }
+
 // Single post that user posts
 function displayPost(postData) {
   const postContainer = document.createElement('div')
@@ -304,3 +312,57 @@ function openPost(postData) {
   )
   openPost.show()
 }
+
+// Filter posts
+document
+  .getElementById('select_Filter')
+  .addEventListener('change', async (e) => {
+    const selectedOption = e.target.value
+
+    switch (selectedOption) {
+      case 'newest':
+        // Fetch and display posts sorted by date in descending order (newest first)
+        const newestPosts = await fetchWithToken(
+          API_BASE_URL + '/api/v1/social/posts',
+          limit,
+          0,
+          'created',
+          'desc'
+        )
+        displayPosts(newestPosts)
+        break
+
+      case 'oldest':
+        // Fetch and display posts sorted by date in ascending order (oldest first)
+        const oldestPosts = await fetchWithToken(
+          API_BASE_URL + '/api/v1/social/posts',
+          limit,
+          0,
+          'created',
+          'asc'
+        )
+        displayPosts(oldestPosts)
+        break
+
+      case 'media':
+        // Fetch all posts and filter client-side for those with media
+        const allPosts = await fetchWithToken(
+          API_BASE_URL + '/api/v1/social/posts',
+          100
+        ) // Adjust limit as needed
+        const postsWithMedia = allPosts.filter((post) => post.media)
+        displayPosts(postsWithMedia)
+        break
+
+      default:
+        // No filter or sort selected, or handle the 'none' option
+        const defaultPosts = await fetchWithToken(
+          API_BASE_URL + '/api/v1/social/posts',
+          limit,
+          0
+        )
+        displayPosts(defaultPosts)
+    }
+
+    currentOffset = limit
+  })
