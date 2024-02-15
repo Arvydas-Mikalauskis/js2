@@ -1,4 +1,4 @@
-/* const API_BASE_URL = 'https://api.noroff.dev'
+const API_BASE_URL = 'https://api.noroff.dev'
 
 // Register User
 
@@ -107,10 +107,10 @@ async function loginUser(url, data) {
   } catch (error) {
     console.log(error)
   }
-} */
+}
 
 // Fetch posts
-/* 
+
 async function fetchWithToken(url) {
   try {
     const token = localStorage.getItem('accessToken')
@@ -128,7 +128,6 @@ async function fetchWithToken(url) {
   } catch (error) {
     console.log(error)
   }
-} */
-/* 
-fetchWithToken(API_BASE_URL + '/api/v1/social/posts')
- */
+}
+
+/* fetchWithToken(API_BASE_URL + '/api/v1/social/posts') */
