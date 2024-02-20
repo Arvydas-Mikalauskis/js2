@@ -1,11 +1,12 @@
 .mainContainer {
-  background: url(../images/kike-vega-F2qh3yjz6Jk-unsplash.jpg) center center
-    no-repeat;
+  background: url(../images/logIn_background.jpg) center center no-repeat;
   background-size: cover;
 }
 
 .logInContainer {
   background-color: rgb(0, 0, 0, 0.8);
+  border: 1px solid rgb(246, 231, 231, 0.2);
+  border-radius: 4px;
 }
 
 #signupButton:hover {
@@ -13,5 +14,100 @@
 }
 
 #postMessage_Box {
-  background-color: rgba(240, 240, 240, 1);
+  background-color: rgb(233, 236, 239);
+}
+
+.post-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.postCard_Top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.8);
+}
+
+.card-title {
+  margin: 0px 0px 6px 12px;
+}
+
+.topButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.deletePost_Btn,
+.updatePost_Btn {
+  background-color: transparent;
+  color: rgb(247, 110, 110);
+  border: none;
+  border-radius: 5px;
+  padding: 0px 4px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.deletePost_Btn:hover {
+  color: rgb(255, 0, 0);
+}
+
+.updatePost_Btn {
+  background-color: transparent;
+  color: #7780fb;
+}
+
+.updatePost_Btn:hover {
+  color: #2c3aff;
+}
+
+.reactionButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.upVote_Btn,
+.downVote_Btn {
+  background: none;
+  border: none;
+  margin: 8px 4px;
+}
+
+.upVote_Btn {
+  color: greenyellow;
+}
+
+.upVote_Btn:hover {
+  color: rgb(56, 247, 8);
+}
+
+.downVote_Btn {
+  color: rgb(248, 153, 116);
+}
+
+.downVote_Btn:hover {
+  color: rgb(247, 44, 8);
+}
+
+.vote_text {
+  margin: 8px 0px;
+  font-weight: 600;
+}
+
+.commentForm {
+  margin-top: -10px;
+  border-left: none;
+}
+
+#commentBtn:hover {
+  color: rgb(92, 182, 255);
+  opacity: 1.01;
+}
+
+.card-text {
+  padding: 22px;
 }

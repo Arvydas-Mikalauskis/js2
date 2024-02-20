@@ -48,9 +48,9 @@
         <!-- Feed section -->
         <div class="col-7 bg-light text-info">
           <div class="row p-4">
-            <div class="col-6 mt-1">
-              <h2 class="text-info">Feed</h2>
-              <hr />
+            <div class="col-5 mt-1">
+              <h2 class="text-info h4">Home feed</h2>
+              <hr class="text-primary border-2" />
             </div>
             <div class="col-4 ms-auto">
               <!-- Search bar -->
@@ -62,34 +62,81 @@
                 placeholder="Type to search for... "
               />
               <datalist id="datalistOptions">
-                <option value="Fitness"></option>
-                <option value="Diet"></option>
-                <option value="Weightloss"></option>
-                <option value="Workout"></option>
+                <option value="Title"></option>
+                <option value="Date"></option>
+                <option value="Old"></option>
+                <option value="New"></option>
                 <option value="Cardio"></option>
               </datalist>
             </div>
           </div>
 
           <!-- Post a message section -->
-          <div class="form-container p-3 mt-3">
+          <div class="form-container p-3 mt-3 mx-3">
             <label for="newPost" class="form-label">What's on your mind?</label>
             <div class="card">
               <div class="card-body" id="postMessage_Box">
-                <textarea class="form-control" id="newPost" rows="4"></textarea>
+                <textarea
+                  class="form-control my-2"
+                  id="newPost_Title"
+                  rows="1"
+                  placeholder="Title"
+                ></textarea>
+                <textarea
+                  class="form-control"
+                  id="newPost_Message"
+                  rows="4"
+                  placeholder="Message"
+                ></textarea>
+                <textarea
+                  class="form-control my-2"
+                  id="imageURL_Input"
+                  rows="1"
+                  placeholder="Add photo/image URL adress"
+                ></textarea>
                 <div class="container d-flex justify-content-end my-3">
-                  <button class="btn btn-outline-info mx-2">
+                  <button class="btn btn-outline-info mx-2" disabled>
                     <i class="bi bi-camera-reels"></i> Live Video
                   </button>
-                  <button class="btn btn-dark text-white me-2">
+                  <button
+                    class="btn btn-dark text-white me-2"
+                    disabled
+                    id="addPhoto_Button"
+                  >
                     <i class="bi bi-camera"></i>
                     Add Photo/Video
                   </button>
-                  <button class="btn btn-primary text-white ms-5">
+
+                  <!-- Add photo button modal (Add it later maybe) -->
+
+                  <!-- ________________ -->
+                  <button
+                    class="btn btn-primary text-white ms-5"
+                    id="postMessage_Button"
+                  >
                     <i class="bi bi-chat-dots"></i>
                     Post Message
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+          <hr class="text-primary border-1" />
+          <!-- Filter posts container -->
+          <div class="container mt-4 ms-4">
+            <div class="row">
+              <div class="col-3">
+                <select
+                  class="form-select form-select-sm"
+                  id="select_Filter"
+                  aria-label="Small select"
+                >
+                  <option selected="">Filter posts by..</option>
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="media">With photos</option>
+                  <option value="default">Reset filter</option>
+                </select>
               </div>
             </div>
           </div>
@@ -98,22 +145,101 @@
           <div class="container-md">
             <div class="row mx-4 mt-5">
               <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p>
-                </div>
-                <img
-                  src="assets/images/bs-images/img-2x1.png"
-                  class="card-img-bottom"
-                  alt="card-img-bottom"
-                />
+                <div class="card-body" id="feedPosts_Container"></div>
+              </div>
+            </div>
+          </div>
+          <div class="d-grid w-50 mx-auto mt-5">
+            <button
+              class="btn btn-outline-primary py-2 text-dark"
+              id="showMore_PostsButton"
+              type="button"
+            >
+              Show More
+            </button>
+          </div>
+        </div>
+
+        <!-- Modal to edit Feed Posts -->
+        <!-- Edit Post Modal -->
+        <div
+          class="modal fade"
+          id="editPostModal"
+          tabindex="-1"
+          aria-labelledby="editPostModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <textarea
+                    class="form-control my-2"
+                    id="updatedPost_Title"
+                    rows="1"
+                    placeholder="Title"
+                  ></textarea>
+                  <textarea
+                    class="form-control my-2"
+                    id="updatedPost_Message"
+                    rows="4"
+                    placeholder="Message"
+                  ></textarea>
+                  <textarea
+                    class="form-control my-2"
+                    id="updatePost_Media"
+                    rows="1"
+                    placeholder="Phot/Picture URL"
+                  ></textarea>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="savePost_Changes"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Open post by ID modal -->
+        <div class="modal fade" tabindex="-1" id="showSinglePost_Modal">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="openPost_title"></h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  aria-label="Close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body" id="openModal_body"></div>
+              <img src="" alt="" id="openPost_Image" />
+              <div class="modal-footer">
+                <!-- Add some like comment buttons?-->
               </div>
             </div>
           </div>
@@ -196,7 +322,7 @@
         </div>
       </div>
     </div>
+    <script src="js/feedScripts.js" type="module"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
   </body>
 </html>
