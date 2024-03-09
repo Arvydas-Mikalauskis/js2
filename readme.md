@@ -1,6 +1,4 @@
-# Bootstrap 5 Simple Starter
-
-This is a simple boilerplate for creating and customizing Bootstrap websites. Just run the watch command and customize Bootstrap by changing the variable values.
+# Noroff javascript module 2 project
 
 ## Usage
 
